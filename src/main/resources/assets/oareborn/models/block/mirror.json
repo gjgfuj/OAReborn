@@ -1,0 +1,23 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "textures": {
+        "0": "oareborn:laserMirrorSide",
+        "1": "oareborn:laserMirror"
+    },
+    "elements": [
+        {
+            "name": "Mirror",
+            "from": [ 6.0, 0.0, 0.0 ], 
+            "to": [ 10.0, 16.0, 16.0 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": -45.0 },
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 16.0 ] },
+                "east": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 16.0 ] },
+                "west": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 16.0 ] },
+                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 4.0, 16.0 ] }
+            }
+        }
+    ]
+}

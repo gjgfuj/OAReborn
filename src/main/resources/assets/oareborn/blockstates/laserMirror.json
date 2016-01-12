@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "oareborn:mirror"
+  },
+  "variants": {
+    "dir": {
+      "nw/se": {},
+      "ne/sw": {"y":90},
+      "ue/dw": {"x":90},
+      "us/dn": {"x":90,"y":90},
+      "uw/de": {"x":90,"y":180},
+      "un/ds": {"x":90,"y":270}
+    },
+    "normal": [
+      {}
+    ],
+    "inventory": [
+      {}
+    ]
+  }
+}
