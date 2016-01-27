@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "OAReborn",
+  "name": "OpenAutomation REBORN!",
+  "description": "A total rewrite of OpenAutomation for 1.8",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Sandra","AceK7"],
+  "credits": "Thanks to AceK7 for some textures.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
