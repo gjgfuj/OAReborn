@@ -10,21 +10,20 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class CommonProxy {
 
-	public Block registerBlock(Block block, String name)
-	{
-		GameRegistry.registerBlock(block,name);
-		block.setUnlocalizedName(name);
-		return block;
-	}
-	public Block registerBlock(Block block, String name, Class<? extends TileEntity> te)
-	{
-		GameRegistry.registerTileEntity(te,name);
-		return registerBlock(block,name);
-	}
-	public Item registerItem(Item item, String name)
-	{
-		GameRegistry.registerItem(item,name);
-		item.setUnlocalizedName(name);
-		return item;
-	}
+    public Block registerBlock(Block block, String name) {
+        GameRegistry.registerBlock(block, name);
+        block.setUnlocalizedName(name);
+        return block;
+    }
+
+    public Block registerBlock(Block block, String name, Class<? extends TileEntity> te) {
+        GameRegistry.registerTileEntity(te, name);
+        return registerBlock(block, name);
+    }
+
+    public Item registerItem(Item item, String name) {
+        GameRegistry.registerItem(item, name);
+        item.setUnlocalizedName(name);
+        return item;
+    }
 }

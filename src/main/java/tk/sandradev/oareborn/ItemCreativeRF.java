@@ -13,22 +13,21 @@ import net.minecraft.world.World;
  * Created by Sandra on 12/01/2016.
  */
 public class ItemCreativeRF extends Item {
-	@Override
-	public boolean onItemUse(ItemStack stack_,
-	                         EntityPlayer player,
-	                         World world,
-	                         BlockPos pos,
-	                         EnumFacing face,
-	                         float ix,
-	                         float iy,
-	                         float iz) {
-		TileEntity te = world.getTileEntity(pos);
-		if (world.getTileEntity(pos) instanceof IEnergyReceiver)
-		{
-			IEnergyReceiver r = (IEnergyReceiver) te;
-			r.receiveEnergy(face,r.getMaxEnergyStored(face),false);
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean onItemUse(ItemStack stack_,
+                             EntityPlayer player,
+                             World world,
+                             BlockPos pos,
+                             EnumFacing face,
+                             float ix,
+                             float iy,
+                             float iz) {
+        TileEntity te = world.getTileEntity(pos);
+        if (world.getTileEntity(pos) instanceof IEnergyReceiver) {
+            IEnergyReceiver r = (IEnergyReceiver) te;
+            r.receiveEnergy(face, r.getMaxEnergyStored(face), false);
+            return true;
+        }
+        return false;
+    }
 }

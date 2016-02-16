@@ -11,23 +11,28 @@ import tk.sandradev.oareborn.api.lasers.ILaser;
  * Created by Sandra on 12/01/2016.
  */
 public class LaserPlayer implements ILaser {
-	EntityPlayer player;
-	public LaserPlayer(EntityPlayer player)
-	{
-		this.player = player;
-	}
-	public String getType() {return "PLAYER";}
-	public void transitCallback() {
+    EntityPlayer player;
 
-	}
-	@Override
-	public Object receiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face) {
-		player.setPositionAndUpdate(pos.getX()+0.5,pos.getY()+0.5,pos.getZ()+0.5);
-		return null;
-	}
+    public LaserPlayer(EntityPlayer player) {
+        this.player = player;
+    }
 
-	@Override
-	public boolean canReceiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face) {
-		return world.isAirBlock(pos);
-	}
+    public String getType() {
+        return "PLAYER";
+    }
+
+    public void transitCallback() {
+
+    }
+
+    @Override
+    public Object receiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face) {
+        player.setPositionAndUpdate(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+        return null;
+    }
+
+    @Override
+    public boolean canReceiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face) {
+        return world.isAirBlock(pos);
+    }
 }

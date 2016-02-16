@@ -12,15 +12,15 @@ import net.minecraft.world.World;
  * Created by Sandra on 12/01/2016.
  */
 public abstract class OABlock extends Block {
-	public OABlock(Material mat) {
-		super(mat);
-	}
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side)
-	{
-		return false;
-	}
-	public boolean onBlockActivated (World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float ax, float ay, float az)
-	{
-		return onBlockActivated(world,pos,state,player,side);
-	}
+    public OABlock(Material mat) {
+        super(mat);
+    }
+
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side) {
+        return false;
+    }
+
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float ax, float ay, float az) {
+        return onBlockActivated(world, pos, state, player, side);
+    }
 }

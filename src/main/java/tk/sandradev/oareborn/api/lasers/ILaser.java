@@ -9,8 +9,11 @@ import net.minecraft.world.World;
  * Created by Sandra on 12/01/2016.
  */
 public interface ILaser {
-	String getType();
-	Object receiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face);
-	boolean canReceiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face);
-	void transitCallback();
+    String getType();
+
+    Object receiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face);
+
+    boolean canReceiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face);
+
+    void transitCallback();
 }
