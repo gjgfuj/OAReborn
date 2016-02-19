@@ -2,14 +2,18 @@
   "forge_marker": 1,
   "defaults": {
     "model": "minecraft:cube_all",
-    "textures": {"all":"oareborn:laserPlayerUnpowered"}
+    "textures": {
+      "all": "oareborn:blocks/laserPlayerUnpowered"
+    }
   },
   "variants":
   {
     "powered": {
       "false": {},
       "true": {
-        "textures": {"all":"oareborn:laserPlayerPowered"}
+        "textures": {
+          "all": "oareborn:blocks/laserPlayerPowered"
+        }
       }
     },
     "normal": [{}],

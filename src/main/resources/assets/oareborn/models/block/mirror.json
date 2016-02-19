@@ -1,8 +1,8 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "0": "oareborn:laserMirrorSide",
-        "1": "oareborn:laserMirror"
+        "0": "oareborn:blocks/laserMirrorSide",
+        "1": "oareborn:blocks/laserMirror"
     },
     "elements": [
         {

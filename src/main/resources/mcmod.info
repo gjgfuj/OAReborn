@@ -2,7 +2,7 @@
 {
   "modid": "OAReborn",
   "name": "OpenAutomation REBORN!",
-  "description": "A total rewrite of OpenAutomation for 1.8",
+  "description": "Automating the things!",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
