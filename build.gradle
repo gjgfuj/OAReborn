@@ -71,7 +71,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-	//provided "li.cil.tis3d:TIS-3D:0.8.2"
+    //provided "li.cil.tis3d:TIS-3D:0.8.+"
     provided "li.cil.oc:OpenComputers:MC1.7.10-1.6.+:api"
     deobfCompile "MCMultiPart:MCMultiPart:1.0.+:universal"
 }
