@@ -21,12 +21,15 @@ public class LaserPlayer implements ILaser {
         return "PLAYER";
     }
 
-    public void transitCallback() {
-
+    @Override
+    public boolean canMultiDestination() {
+        return false;
     }
 
     @Override
     public Object receiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face) {
+        if (player.worldObj != world)
+            player.travelToDimension(world.provider.getDimensionId());
         player.setPositionAndUpdate(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
         return null;
     }
@@ -34,5 +37,10 @@ public class LaserPlayer implements ILaser {
     @Override
     public boolean canReceiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face) {
         return world.isAirBlock(pos);
+    }
+
+    @Override
+    public void transitCallback(BlockPos start, BlockPos end) {
+
     }
 }

@@ -10,10 +10,11 @@ import net.minecraft.world.World;
  */
 public interface ILaser {
     String getType();
+    boolean canMultiDestination();
 
     Object receiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face);
 
     boolean canReceiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face);
 
-    void transitCallback();
+    void transitCallback(BlockPos start,BlockPos end);
 }

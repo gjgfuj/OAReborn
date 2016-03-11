@@ -16,12 +16,14 @@ import tk.sandradev.oareborn.internal.CommonProxy;
 import tk.sandradev.oareborn.lasers.block.BlockLaserMirror;
 import tk.sandradev.oareborn.lasers.block.BlockLaserPlayer;
 import tk.sandradev.oareborn.lasers.block.BlockLaserReceiver;
+import tk.sandradev.oareborn.lasers.block.BlockLaserSplitter;
 
 @Mod(modid = "OALasers")
 public class OARebornLasers {
     public static Block laserReceiver = null;
     public static Block laserMirror = null;
     public static Block laserPlayer = null;
+    public static Block laserSplitter = null;
     public static Item itemLaserLens = null;
     public static Item itemLaserProjector = null;
     public static Item itemLaserMirror = null;
@@ -37,6 +39,8 @@ public class OARebornLasers {
         proxy.registerBlock(laserReceiver, "oareborn:laserReceiver").setCreativeTab(tab);
         laserMirror = new BlockLaserMirror();
         proxy.registerBlock(laserMirror, "oareborn:laserMirror").setCreativeTab(tab);
+        laserSplitter = new BlockLaserSplitter();
+        proxy.registerBlock(laserSplitter, "oareborn:laserSplitter").setCreativeTab(tab);
         laserPlayer = new BlockLaserPlayer();
         proxy.registerBlock(laserPlayer, "oareborn:laserPlayer", BlockLaserPlayer.TE.class).setCreativeTab(tab);
         itemLaserLens = new Item();

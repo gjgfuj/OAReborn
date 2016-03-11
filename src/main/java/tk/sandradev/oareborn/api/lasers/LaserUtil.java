@@ -45,8 +45,10 @@ public class LaserUtil {
         IBlockState b = world.getBlockState(finalPos);
         TileEntity t = world.getTileEntity(pos);
         if (t != null && t.hasCapability(cap, face.getOpposite())) {
+            laser.transitCallback(pos,finalPos);
             return t.getCapability(cap, face.getOpposite()).receiveLaser(laser);
         } else if (b.getBlock() instanceof ILaserReceiver) {
+            laser.transitCallback(pos,finalPos);
             return ((ILaserReceiver) b.getBlock()).receiveLaser(world, finalPos, b, face.getOpposite(), laser);
         }
         return null;
