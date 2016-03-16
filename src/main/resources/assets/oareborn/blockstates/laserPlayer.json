@@ -8,6 +8,19 @@
   },
   "variants":
   {
+    "singleside": {
+      "true": {"model": "oareborn:sidedsender"},
+      "false": {}
+    },
+    "facing":
+    {
+      "north": {},
+      "east": {"y":90},
+      "south": {"y":180},
+      "west": {"y":270},
+      "up": {"x":270},
+      "down": {"x":90}
+    },
     "powered": {
       "false": {},
       "true": {

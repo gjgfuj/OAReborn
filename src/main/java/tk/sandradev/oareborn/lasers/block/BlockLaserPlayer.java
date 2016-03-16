@@ -27,42 +27,34 @@ import tk.sandradev.oareborn.internal.OABlock;
 /**
  * Created by Sandra on 12/01/2016.
  */
-public class BlockLaserPlayer extends OABlock implements ITileEntityProvider {
+public class BlockLaserPlayer extends BlockLaserSender implements ITileEntityProvider {
     public static PropertyBool POWERED = PropertyBool.create("powered");
 
     public BlockLaserPlayer() {
-        super(Material.iron);
         setDefaultState(this.blockState.getBaseState());
-    }
-
-    public int getMetaFromState(IBlockState state) {
-        return 0;
-    }
-
-    public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState();
     }
 
     @Override
     protected BlockState createBlockState() {
-        return new BlockState(this, new IProperty[]{POWERED});
+        return new BlockState(this, POWERED,SINGLESIDE,FACING);
     }
 
     public IBlockState getActualState(IBlockState state, IBlockAccess access, BlockPos pos) {
-        return state.withProperty(POWERED, ((TE) access.getTileEntity(pos)).getEnergyStored(null) >= 3000);
+        return super.getActualState(state,access,pos).withProperty(POWERED, ((TE) access.getTileEntity(pos)).getEnergyStored(null) >= 3000);
     }
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side) {
+        if (super.onBlockActivated(world,pos,state,player,side)) return true;
         world.markBlockForUpdate(pos);
         if (!world.isRemote) {
             ILaser laser = new LaserPlayer(player);
             TE te = ((TE) world.getTileEntity(pos));
             if (te.getEnergyStored(null) >= 3000)
-                if (LaserUtil.canSendLaser(world, pos, side.getOpposite(), laser)) {
+                if (LaserUtil.canSendLaser(world, pos, getSide(world,pos,state,side), laser)) {
                     te.storage.extractEnergy(3000, false);
                     player.addChatComponentMessage(new ChatComponentText("WHOOSH"));
-                    LaserUtil.sendLaser(world, pos, side.getOpposite(), laser);
+                    LaserUtil.sendLaser(world, pos, getSide(world,pos,state,side), laser);
                 } else {
                     player.addChatComponentMessage(new ChatComponentText("But nothing happened."));
                 }
@@ -126,6 +118,10 @@ public class BlockLaserPlayer extends OABlock implements ITileEntityProvider {
         public void writeToNBT(NBTTagCompound tag) {
             super.writeToNBT(tag);
             storage.writeToNBT(tag);
+        }
+        public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState)
+        {
+            return oldState.getBlock() != newState.getBlock();
         }
     }
 }

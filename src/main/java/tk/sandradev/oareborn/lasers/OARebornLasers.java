@@ -28,11 +28,16 @@ public class OARebornLasers {
     public static Item itemLaserProjector = null;
     public static Item itemLaserMirror = null;
     public static CommonProxy proxy = null;
+    public static boolean singleOutputSender = true;
+    public static boolean singleOutputReceiver = true;
     //public static SimpleNetworkWrapper network = null;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         proxy = OAReborn.proxy;
+        singleOutputSender = OAReborn.config.getBoolean("singleOutputSender","Lasers",true,"for senders: true: use a single output, all other sides input method, false: use a input 1 side, output the opposite side model.");
+        singleOutputReceiver = OAReborn.config.getBoolean("singleOutputReceiver","Lasers",false,"for receivers: true: use a single output, all other sides input method, false: use a input 1 side, output the opposite side model.");
+
         CreativeTabs tab = OAReborn.tab;
         CapabilityManager.INSTANCE.register(ILaserReceiverCap.class, new ILaserReceiverCap.Storage(), new ILaserReceiverCap.Factory());
         laserReceiver = new BlockLaserReceiver();

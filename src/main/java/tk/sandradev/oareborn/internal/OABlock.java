@@ -12,8 +12,16 @@ import net.minecraft.world.World;
  * Created by Sandra on 12/01/2016.
  */
 public abstract class OABlock extends Block {
+    public OABlock() { super(Material.iron);}
     public OABlock(Material mat) {
         super(mat);
+    }
+    public int getMetaFromState(IBlockState state) {
+        return 0;
+    }
+
+    public IBlockState getStateFromMeta(int meta) {
+        return getDefaultState();
     }
 
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side) {

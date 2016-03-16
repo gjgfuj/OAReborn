@@ -12,18 +12,18 @@ import tk.sandradev.oareborn.api.lasers.ILaserReceiver;
 /**
  * Created by Sandra on 12/01/2016.
  */
-public class BlockLaserReceiver extends Block implements ILaserReceiver {
+public class BlockLaserReceiver extends BlockLaserSender implements ILaserReceiver {
     public BlockLaserReceiver() {
-        super(Material.iron);
+
     }
 
     @Override
     public Object receiveLaser(World world, BlockPos pos, IBlockState state, EnumFacing face, ILaser laser) {
-        return laser.receiveIn(world, pos.offset(face.getOpposite()), state, face);
+        return laser.receiveIn(world, pos.offset(getSide(world,pos,state,face)), state, face);
     }
 
     @Override
     public boolean canReceiveLaser(World world, BlockPos pos, IBlockState state, EnumFacing face, ILaser laser) {
-        return laser.canReceiveIn(world, pos.offset(face.getOpposite()), state, face);
+        return laser.canReceiveIn(world, pos.offset(getSide(world,pos,state,face)), state, face);
     }
 }

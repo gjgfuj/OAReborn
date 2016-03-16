@@ -92,4 +92,12 @@ public class BlockLaserSplitter extends OABlock implements ILaserReceiver {
         }
         return true;
     }
+    public boolean isOpaqueCube() {
+        return false;
+    }
+
+    public boolean isFullCube() {
+        return false;
+    }
+
 }
