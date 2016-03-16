@@ -60,6 +60,7 @@ public class OARebornLasers {
         GameRegistry.addRecipe(new ShapedOreRecipe(itemLaserProjector, "l g", " gl", "g g", 'g', "dustGlowstone", 'l', itemLaserLens));
         GameRegistry.addRecipe(new ShapedOreRecipe(laserReceiver, "mpm", "lgm", "mgm", 'm', "ingotIron", 'p', itemLaserProjector, 'l', itemLaserLens));
         GameRegistry.addRecipe(new ShapedOreRecipe(laserMirror, " lm", "lil", "ml ", 'm', "ingotIron", 'i', itemLaserMirror, 'l', itemLaserLens));
+        GameRegistry.addRecipe(new ShapedOreRecipe(laserSplitter, "mlm","iii","mlm", 'm',"ingotIron",'i',itemLaserMirror,'l',itemLaserLens));
         GameRegistry.addRecipe(new ShapedOreRecipe(laserPlayer, "mem", "elp", "mrm", 'm', "ingotIron", 'e', Items.ender_pearl, 'l', itemLaserLens, 'p', itemLaserProjector, 'r', "blockRedstone"));
     }
 }
