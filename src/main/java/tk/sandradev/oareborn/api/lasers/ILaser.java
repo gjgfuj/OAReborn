@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 public interface ILaser {
     String getType();
     boolean canMultiDestination();
-
+    SplitLaser split();
     Object receiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face);
 
     boolean canReceiveIn(World world, BlockPos pos, IBlockState state, EnumFacing face);

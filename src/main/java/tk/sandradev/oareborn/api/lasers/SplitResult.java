@@ -1,6 +1,6 @@
 package tk.sandradev.oareborn.api.lasers;
 
-public class SplitResult {
+public class SplitResult<T> {
     public Object result1;
     public Object result2;
     public SplitResult(Object r1, Object r2)

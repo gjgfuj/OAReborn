@@ -9,10 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import tk.sandradev.oareborn.api.lasers.ILaser;
-import tk.sandradev.oareborn.api.lasers.ILaserReceiver;
-import tk.sandradev.oareborn.api.lasers.LaserUtil;
-import tk.sandradev.oareborn.api.lasers.SplitResult;
+import tk.sandradev.oareborn.api.lasers.*;
 import tk.sandradev.oareborn.internal.OABlock;
 
 public class BlockLaserSplitter extends OABlock implements ILaserReceiver {
@@ -72,16 +69,18 @@ public class BlockLaserSplitter extends OABlock implements ILaserReceiver {
     @Override
     public Object receiveLaser(World world, BlockPos pos, IBlockState state, EnumFacing face, ILaser laser) {
         EnumFacing.Axis axis = getAxis(state);
-        Object r1 = LaserUtil.sendLaser(world, pos, getDir1(axis), laser);
-        Object r2 = LaserUtil.sendLaser(world,pos, getDir2(axis),laser);
+        SplitLaser lasers = laser.split();
+        Object r1 = LaserUtil.sendLaser(world, pos, getDir1(axis), lasers.l1);
+        Object r2 = LaserUtil.sendLaser(world,pos, getDir2(axis), lasers.l2);
         return new SplitResult(r1,r2);
     }
 
     @Override
     public boolean canReceiveLaser(World world, BlockPos pos, IBlockState state, EnumFacing face, ILaser laser) {
         EnumFacing.Axis axis = getAxis(state);
-        boolean r1 = LaserUtil.canSendLaser(world, pos, getDir1(axis), laser);
-        boolean r2 = LaserUtil.canSendLaser(world,pos, getDir2(axis),laser);
+        SplitLaser lasers = laser.split();
+        boolean r1 = LaserUtil.canSendLaser(world, pos, getDir1(axis), lasers.l1);
+        boolean r2 = LaserUtil.canSendLaser(world,pos, getDir2(axis),lasers.l2);
         return  laser.canMultiDestination() ? r1&&r2 : r1||r2;
     }
 

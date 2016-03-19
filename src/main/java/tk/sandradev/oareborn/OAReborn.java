@@ -1,5 +1,6 @@
 package tk.sandradev.oareborn;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
@@ -16,6 +17,7 @@ import tk.sandradev.oareborn.lasers.OARebornLasers;
 @Mod(modid = "OAReborn")
 public class OAReborn {
     public static Item creativeRFFiller = null;
+    public static BlockEnergyReader energyReader = null;
     public static CreativeTabs tab = new CreativeTabs("oareborn") {
         @Override
         public Item getTabIconItem() {
@@ -31,8 +33,10 @@ public class OAReborn {
         config = new Configuration(e.getSuggestedConfigurationFile());
         config.load();
         creativeRFFiller = new ItemCreativeRF();
-        proxy.registerItem(creativeRFFiller, "oareborn:creativeRFFiller");
-        creativeRFFiller.setCreativeTab(tab);
+        proxy.registerItem(creativeRFFiller, "oareborn:creativeRFFiller").setCreativeTab(tab);
+        energyReader = new BlockEnergyReader();
+        proxy.registerBlock(energyReader, "oareborn:energyReader",BlockEnergyReader.TE.class).setCreativeTab(tab);
+
     }
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e)

@@ -1,4 +1,4 @@
-package tk.sandradev.oareborn.lasers.block;
+package tk.sandradev.oareborn.internal;
 
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -10,14 +10,21 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import tk.sandradev.oareborn.OAReborn;
 import tk.sandradev.oareborn.api.lasers.ILaser;
 import tk.sandradev.oareborn.internal.OABlock;
 import tk.sandradev.oareborn.lasers.OARebornLasers;
 
-public abstract class BlockLaserSender extends OABlock {
+public abstract class BlockPointerOrSided extends OABlock {
     public static PropertyEnum<EnumFacing> FACING = PropertyEnum.create("facing",EnumFacing.class);
     public static PropertyBool SINGLESIDE = PropertyBool.create("singleSide");
-    public boolean enabled = OARebornLasers.singleOutputSender;
+    public boolean enabled;
+    public abstract boolean enabledByDefault();
+    public abstract String type();
+    public BlockPointerOrSided()
+    {
+        enabled = OAReborn.config.getBoolean(type(),"singlesided",enabledByDefault(),type().concat(": true: use a single output, all other sides input method, false: use a input 1 side, output the opposite side model."));
+    }
     public int getMetaFromState(IBlockState state) {
         return state.getValue(FACING).ordinal();
     }
@@ -33,11 +40,11 @@ public abstract class BlockLaserSender extends OABlock {
         return new BlockState(this, FACING,SINGLESIDE);
     }
     public boolean isOpaqueCube() {
-        return !enabled;
+        return enabled;
     }
 
     public boolean isFullCube() {
-        return !enabled;
+        return enabled;
     }
 
     public EnumFacing getSide(World world, BlockPos pos, IBlockState state, EnumFacing side)

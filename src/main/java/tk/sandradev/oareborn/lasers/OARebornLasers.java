@@ -13,31 +13,24 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import tk.sandradev.oareborn.OAReborn;
 import tk.sandradev.oareborn.api.lasers.ILaserReceiverCap;
 import tk.sandradev.oareborn.internal.CommonProxy;
-import tk.sandradev.oareborn.lasers.block.BlockLaserMirror;
-import tk.sandradev.oareborn.lasers.block.BlockLaserPlayer;
-import tk.sandradev.oareborn.lasers.block.BlockLaserReceiver;
-import tk.sandradev.oareborn.lasers.block.BlockLaserSplitter;
+import tk.sandradev.oareborn.lasers.block.*;
 
 @Mod(modid = "OALasers")
 public class OARebornLasers {
-    public static Block laserReceiver = null;
-    public static Block laserMirror = null;
-    public static Block laserPlayer = null;
-    public static Block laserSplitter = null;
+    public static BlockLaserReceiver laserReceiver = null;
+    public static BlockLaserMirror laserMirror = null;
+    public static BlockLaserPlayer laserPlayer = null;
+    public static BlockLaserSplitter laserSplitter = null;
+    public static BlockLaserEnergy laserEnergy = null;
     public static Item itemLaserLens = null;
     public static Item itemLaserProjector = null;
     public static Item itemLaserMirror = null;
     public static CommonProxy proxy = null;
-    public static boolean singleOutputSender = true;
-    public static boolean singleOutputReceiver = true;
     //public static SimpleNetworkWrapper network = null;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         proxy = OAReborn.proxy;
-        singleOutputSender = OAReborn.config.getBoolean("singleOutputSender","Lasers",true,"for senders: true: use a single output, all other sides input method, false: use a input 1 side, output the opposite side model.");
-        singleOutputReceiver = OAReborn.config.getBoolean("singleOutputReceiver","Lasers",false,"for receivers: true: use a single output, all other sides input method, false: use a input 1 side, output the opposite side model.");
-
         CreativeTabs tab = OAReborn.tab;
         CapabilityManager.INSTANCE.register(ILaserReceiverCap.class, new ILaserReceiverCap.Storage(), new ILaserReceiverCap.Factory());
         laserReceiver = new BlockLaserReceiver();
@@ -48,6 +41,8 @@ public class OARebornLasers {
         proxy.registerBlock(laserSplitter, "oareborn:laserSplitter").setCreativeTab(tab);
         laserPlayer = new BlockLaserPlayer();
         proxy.registerBlock(laserPlayer, "oareborn:laserPlayer", BlockLaserPlayer.TE.class).setCreativeTab(tab);
+        laserEnergy = new BlockLaserEnergy();
+        proxy.registerBlock(laserEnergy,"oareborn:laserEnergy", BlockLaserEnergy.TE.class).setCreativeTab(tab);
         itemLaserLens = new Item();
         proxy.registerItem(itemLaserLens, "oareborn:itemLaserLens").setCreativeTab(tab);
         itemLaserMirror = new Item();

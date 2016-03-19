@@ -6,6 +6,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import tk.sandradev.oareborn.api.lasers.ILaser;
+import tk.sandradev.oareborn.api.lasers.SplitLaser;
 
 /**
  * Created by Sandra on 12/01/2016.
@@ -24,6 +25,11 @@ public class LaserPlayer implements ILaser {
     @Override
     public boolean canMultiDestination() {
         return false;
+    }
+
+    @Override
+    public SplitLaser split() {
+        return new SplitLaser(this,this);
     }
 
     @Override

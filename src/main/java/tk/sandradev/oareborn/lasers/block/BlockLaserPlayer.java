@@ -3,8 +3,6 @@ package tk.sandradev.oareborn.lasers.block;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -22,13 +20,23 @@ import net.minecraft.world.World;
 import tk.sandradev.oareborn.api.lasers.ILaser;
 import tk.sandradev.oareborn.api.lasers.LaserUtil;
 import tk.sandradev.oareborn.api.lasers.types.LaserPlayer;
-import tk.sandradev.oareborn.internal.OABlock;
+import tk.sandradev.oareborn.internal.BlockPointerOrSided;
 
 /**
  * Created by Sandra on 12/01/2016.
  */
-public class BlockLaserPlayer extends BlockLaserSender implements ITileEntityProvider {
+public class BlockLaserPlayer extends BlockPointerOrSided implements ITileEntityProvider {
     public static PropertyBool POWERED = PropertyBool.create("powered");
+
+    @Override
+    public boolean enabledByDefault() {
+        return true;
+    }
+
+    @Override
+    public String type() {
+        return "LaserPlayer";
+    }
 
     public BlockLaserPlayer() {
         setDefaultState(this.blockState.getBaseState());
@@ -73,13 +81,11 @@ public class BlockLaserPlayer extends BlockLaserSender implements ITileEntityPro
 
     public static class TE extends TileEntity implements IEnergyReceiver {
         //TODO: ADD CAPABILITY SUPPORT
-        EnergyStorage storage = new EnergyStorage(32000, 3000);
+        EnergyStorage storage = new EnergyStorage(32000, 6000);
 
         @Override
         public int receiveEnergy(EnumFacing from, int maxReceive, boolean simulate) {
-            if (getEnergyStored(from) + maxReceive >= 3000 && getEnergyStored(from) < 3000) {
-                worldObj.markBlockForUpdate(pos);
-            }
+            if (storage.getEnergyStored()<3000) worldObj.markBlockForUpdate(pos);
             return storage.receiveEnergy(maxReceive, simulate);
         }
 
