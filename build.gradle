@@ -22,7 +22,7 @@ plugins {
 }
 */
 //MCVERSION-MAJORMOD.MAJORAPI.MINOR.PATCH
-version = "1.8.9-0.0.2.1"
+version = "1.8.9-2.0.3.0"
 group= "tk.sandradev.oareborn" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "OAReborn"
 
