@@ -3,12 +3,11 @@ package tk.sandradev.oareborn.api.lasers.types;
 import cofh.api.energy.IEnergyReceiver;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import tk.sandradev.oareborn.api.lasers.ILaser;
 import tk.sandradev.oareborn.api.lasers.SplitLaser;
-import tk.sandradev.oareborn.api.lasers.SplitResult;
 
 public class LaserEnergy implements ILaser {
     public int amount;

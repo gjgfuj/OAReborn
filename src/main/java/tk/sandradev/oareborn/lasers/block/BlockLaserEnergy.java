@@ -7,13 +7,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLLog;
 import tk.sandradev.oareborn.api.lasers.LaserUtil;
 import tk.sandradev.oareborn.api.lasers.SplitResult;
 import tk.sandradev.oareborn.api.lasers.types.LaserEnergy;
@@ -50,13 +49,13 @@ public class BlockLaserEnergy extends BlockPointerOrSided implements ITileEntity
 
         @Override
         public Packet getDescriptionPacket() {
-            S35PacketUpdateTileEntity packet = new S35PacketUpdateTileEntity(pos, getBlockMetadata(), new NBTTagCompound());
+            SPacketUpdateTileEntity packet = new SPacketUpdateTileEntity(pos, getBlockMetadata(), new NBTTagCompound());
             packet.getNbtCompound().setInteger("energy", storage.getEnergyStored());
             return packet;
         }
 
         @Override
-        public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
+        public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
             storage.setEnergyStored(packet.getNbtCompound().getInteger("energy"));
         }
 

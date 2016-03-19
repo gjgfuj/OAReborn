@@ -2,7 +2,7 @@ package tk.sandradev.oareborn.api.lasers;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
@@ -36,7 +36,7 @@ public class LaserUtil {
                 return pos;
             }
         }
-        while (i < 300 && !(b.getBlock().isSideSolid(world, pos, face) && b.getBlock().isSideSolid(world, pos, face.getOpposite())));
+        while (i < 300 && !(b.getBlock().isSideSolid(world.getBlockState(pos),world, pos, face) && b.getBlock().isSideSolid(world.getBlockState(pos),world, pos, face.getOpposite())));
         return pos;
     }
 

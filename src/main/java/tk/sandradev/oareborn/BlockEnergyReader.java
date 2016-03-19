@@ -1,22 +1,19 @@
 package tk.sandradev.oareborn;
 
 import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
-import li.cil.oc.api.event.RackMountableRenderEvent;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.world.World;
 import tk.sandradev.oareborn.internal.BlockPointerOrSided;
-import tk.sandradev.oareborn.lasers.OARebornLasers;
 
 public class BlockEnergyReader extends BlockPointerOrSided implements ITileEntityProvider {
     @Override
@@ -30,7 +27,7 @@ public class BlockEnergyReader extends BlockPointerOrSided implements ITileEntit
     }
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side) {
         if (!super.onBlockActivated(world, pos, state, player, side) && !world.isRemote) {
-            player.addChatComponentMessage(new ChatComponentText(((Integer) ((TE) world.getTileEntity(pos)).storage.getEnergyStored()).toString()));
+            player.addChatComponentMessage(new TextComponentString(((Integer) ((TE) world.getTileEntity(pos)).storage.getEnergyStored()).toString()));
         }
         return true;
     }

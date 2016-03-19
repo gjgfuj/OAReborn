@@ -3,10 +3,10 @@ package tk.sandradev.oareborn.lasers.block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.World;
@@ -26,8 +26,8 @@ public class BlockLaserMirror extends OABlock implements ILaserReceiver {
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, new IProperty[]{DIR});
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, new IProperty[]{DIR});
     }
 
     @Override
@@ -50,11 +50,11 @@ public class BlockLaserMirror extends OABlock implements ILaserReceiver {
         else return face.getOpposite();
     }
 
-    public boolean isOpaqueCube() {
+    public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
 
-    public boolean isFullCube() {
+    public boolean isFullCube(IBlockState state) {
         return false;
     }
 
@@ -77,7 +77,7 @@ public class BlockLaserMirror extends OABlock implements ILaserReceiver {
     }
 
     public enum Diagonals implements IStringSerializable {
-        NE_SW("NE/SW", EnumFacing.NORTH, EnumFacing.EAST), NW_SE("NW/SE", EnumFacing.NORTH, EnumFacing.WEST), UN_DS("UN/DS", EnumFacing.UP, EnumFacing.NORTH), US_DN("US/DN", EnumFacing.UP, EnumFacing.SOUTH), UE_DW("UE/DW", EnumFacing.UP, EnumFacing.EAST), UW_DE("UW/DE", EnumFacing.UP, EnumFacing.WEST);
+        NE_SW("ne_sw", EnumFacing.NORTH, EnumFacing.EAST), NW_SE("nw_se", EnumFacing.NORTH, EnumFacing.WEST), UN_DS("un_ds", EnumFacing.UP, EnumFacing.NORTH), US_DN("us_dn", EnumFacing.UP, EnumFacing.SOUTH), UE_DW("ue_dw", EnumFacing.UP, EnumFacing.EAST), UW_DE("uw_de", EnumFacing.UP, EnumFacing.WEST);
         String n;
         EnumFacing s1;
         EnumFacing s2;
