@@ -21,9 +21,10 @@ public abstract class BlockPointerOrSided extends OABlock {
     public boolean enabled;
     public abstract boolean enabledByDefault();
     public abstract String type();
+    public boolean switchable() {return true;}
     public BlockPointerOrSided()
     {
-        enabled = OAReborn.config.getBoolean(type(),"singlesided",enabledByDefault(),type().concat(": true: use a single output, all other sides input method, false: use a input 1 side, output the opposite side model."));
+        enabled = switchable() ? OAReborn.config.getBoolean(type(), "singlesided", enabledByDefault(), type().concat(": true: use a single output, all other sides input method, false: use a input 1 side, output the opposite side model.")) : enabledByDefault();
     }
     public int getMetaFromState(IBlockState state) {
         return state.getValue(FACING).ordinal();

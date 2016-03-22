@@ -22,7 +22,7 @@ plugins {
 }
 */
 //MCVERSION-MAJORMOD.MAJORAPI.MINOR.PATCH
-version = "1.8.9-2.0.3.0"
+version = "1.8.9-2.0.4.0"
 group= "tk.sandradev.oareborn" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "OAReborn"
 
@@ -72,7 +72,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     //provided "li.cil.tis3d:TIS-3D:0.8.+"
-    provided "li.cil.oc:OpenComputers:MC1.7.10-1.6.+:api"
+    provided "li.cil.oc:OpenComputers:MC1.8.9-1.6.+:api"
     deobfCompile "MCMultiPart:MCMultiPart:1.0.+:universal"
 }
 

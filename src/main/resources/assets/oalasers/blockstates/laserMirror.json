@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "oareborn:mirror"
+    "model": "oalasers:mirror"
   },
   "variants": {
     "dir": {
