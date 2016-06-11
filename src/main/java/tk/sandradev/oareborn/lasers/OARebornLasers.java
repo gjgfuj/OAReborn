@@ -1,6 +1,5 @@
 package tk.sandradev.oareborn.lasers;
 
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -21,7 +20,7 @@ public class OARebornLasers {
     public static BlockLaserMirror laserMirror = null;
     public static BlockLaserPlayer laserPlayer = null;
     public static BlockLaserSplitter laserSplitter = null;
-    public static BlockLaserEnergy laserEnergy = null;
+    public static BlockLaserRF laserRF = null;
     public static Item itemLaserLens = null;
     public static Item itemLaserProjector = null;
     public static Item itemLaserMirror = null;
@@ -41,8 +40,8 @@ public class OARebornLasers {
         proxy.registerBlock(laserSplitter, "oalasers:laserSplitter").setCreativeTab(tab);
         laserPlayer = new BlockLaserPlayer();
         proxy.registerBlock(laserPlayer, "oalasers:laserPlayer", BlockLaserPlayer.TE.class).setCreativeTab(tab);
-        laserEnergy = new BlockLaserEnergy();
-        proxy.registerBlock(laserEnergy,"oalasers:laserEnergy", BlockLaserEnergy.TE.class).setCreativeTab(tab);
+        laserRF = new BlockLaserRF();
+        proxy.registerBlock(laserRF,"oalasers:laserEnergy", BlockLaserRF.TE.class).setCreativeTab(tab);
         itemLaserLens = new Item();
         proxy.registerItem(itemLaserLens, "oalasers:itemLaserLens").setCreativeTab(tab);
         itemLaserMirror = new Item();
@@ -62,5 +61,6 @@ public class OARebornLasers {
         GameRegistry.addRecipe(new ShapedOreRecipe(laserMirror, " lm", "lil", "ml ", 'm', "ingotIron", 'i', itemLaserMirror, 'l', itemLaserLens));
         GameRegistry.addRecipe(new ShapedOreRecipe(laserSplitter, "mlm","iii","mlm", 'm',"ingotIron",'i',itemLaserMirror,'l',itemLaserLens));
         GameRegistry.addRecipe(new ShapedOreRecipe(laserPlayer, "mem", "elp", "mrm", 'm', "ingotIron", 'e', Items.ender_pearl, 'l', itemLaserLens, 'p', itemLaserProjector, 'r', "blockRedstone"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(laserRF, "mlm", "rlp", "mrm", 'm', "ingotIron", 'r', "blockRedstone", 'p', itemLaserProjector, 'l', itemLaserLens));
     }
 }

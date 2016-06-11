@@ -1,4 +1,4 @@
-package tk.sandradev.oareborn.api.lasers.types;
+package tk.sandradev.oareborn.api.lasers.types.energy;
 
 import cofh.api.energy.IEnergyReceiver;
 import net.minecraft.block.state.IBlockState;
@@ -8,16 +8,15 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import tk.sandradev.oareborn.api.lasers.ILaser;
 import tk.sandradev.oareborn.api.lasers.SplitLaser;
-import tk.sandradev.oareborn.api.lasers.SplitResult;
 
-public class LaserEnergy implements ILaser {
+public class LaserRF implements ILaser {
     public int amount;
     public int loss;
-    public LaserEnergy(int amount)
+    public LaserRF(int amount)
     {
         this(amount,300);
     }
-    public LaserEnergy(int amount, int loss) {this.amount = amount; this.loss=loss;}
+    public LaserRF(int amount, int loss) {this.amount = amount; this.loss=loss;}
     @Override
     public String getType() {
         return "energy";
@@ -30,7 +29,7 @@ public class LaserEnergy implements ILaser {
 
     @Override
     public SplitLaser split() {
-        return new SplitLaser(new LaserEnergy(amount/2,loss),new LaserEnergy(amount/2,loss));
+        return new SplitLaser(new LaserRF(amount/2,loss),new LaserRF(amount/2,loss));
     }
 
     @Override

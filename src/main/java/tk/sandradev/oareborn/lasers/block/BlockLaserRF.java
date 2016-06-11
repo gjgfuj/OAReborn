@@ -13,14 +13,13 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLLog;
 import tk.sandradev.oareborn.api.lasers.LaserUtil;
 import tk.sandradev.oareborn.api.lasers.SplitResult;
-import tk.sandradev.oareborn.api.lasers.types.LaserEnergy;
+import tk.sandradev.oareborn.api.lasers.types.energy.LaserRF;
 import tk.sandradev.oareborn.internal.BlockPointerOrSided;
 import tk.sandradev.oareborn.lasers.OARebornLasers;
 
-public class BlockLaserEnergy extends BlockPointerOrSided implements ITileEntityProvider {
+public class BlockLaserRF extends BlockPointerOrSided implements ITileEntityProvider {
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
         return new TE();
@@ -33,7 +32,7 @@ public class BlockLaserEnergy extends BlockPointerOrSided implements ITileEntity
 
     @Override
     public String type() {
-        return "LaserEnergy";
+        return "LaserRF";
     }
 
     public static class TE extends TileEntity implements IEnergyReceiver, ITickable {
@@ -106,8 +105,8 @@ public class BlockLaserEnergy extends BlockPointerOrSided implements ITileEntity
             counter++;
             if (counter >= rate && storage.getEnergyStored() >= 1000)
             {
-                EnumFacing side = OARebornLasers.laserEnergy.getSide(worldObj,pos,worldObj.getBlockState(pos),lastSide);
-                LaserEnergy laser = new LaserEnergy(storage.getEnergyStored());
+                EnumFacing side = OARebornLasers.laserRF.getSide(worldObj,pos,worldObj.getBlockState(pos),lastSide);
+                LaserRF laser = new LaserRF(storage.getEnergyStored());
                 if (LaserUtil.canSendLaser(worldObj,pos,side,laser))
                 {
                     Object result = LaserUtil.sendLaser(worldObj,pos,side,laser);
