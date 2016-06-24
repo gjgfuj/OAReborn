@@ -1,0 +1,10 @@
+itemGroup.oareborn=开放式自动化
+tile.oareborn:laserMirror.name=激光反射镜
+tile.oareborn:laserReceiver.name=激光接收器
+tile.oareborn:laserPlayer.name=玩家传送激光
+tile.oareborn:laserEnergy.name=RF传送激光
+tile.oareborn:laserSplitter.name=激光分割器
+item.oareborn:creativeRFFiller.name=创造模式RF填充设备(右击方块将以最快速度充满RF)
+item.oareborn:itemLaserLens.name=激光透镜
+item.oareborn:itemLaserMirror.name=激光反射镜
+item.oareborn:itemLaserProjector.name=激光转发器
